@@ -1,6 +1,6 @@
 ## Welcome! 👋
 
-It is the simplest way from many of them to implement light & dark mode. 
+It is the simplest way from many of them to implement light & dark mode to multiple pages. 
 
 ## It is based on
 
