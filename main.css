@@ -1,0 +1,58 @@
+  .header {
+    padding: 0.7rem;
+    background-color: grey;
+  }
+
+  .header--darkMode, .header--darkMode > button {
+    color: white;
+    background-color: hsl(209, 23%, 22%);
+  }
+
+  .btn-toggle {
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    color: black;
+  }
+
+  .modal {
+    float: right;
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    color: black;
+  }
+
+  .container {
+    padding: 0.7rem;
+    background-color: bisque;
+  }
+
+  .container--hide {
+    display: none;
+}
+
+  .container--darkMode {
+    color: white;
+    background-color: hsl(207, 26%, 17%);
+  }
+
+  .modal__container {
+      display: none;
+  }
+
+  .modal__container--show {
+    display: block;
+    padding: 0.7rem;
+    color: black;
+    background-color: bisque;
+  }
+
+  .modal__container--darkMode {
+    color: white;
+    background-color: hsl(207, 26%, 17%);
+  }
+  
+ 
+  
+  
