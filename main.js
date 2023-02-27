@@ -9,7 +9,7 @@ const container = document.querySelector('.container');
 const header = document.querySelector('.header');
 const lmode = document.querySelectorAll('.lmode');
 const dmode = document.querySelectorAll('.dmode');
-let getMode, nextPageMode, modes;
+let getMode, modes;
 
 /* Setting light & dark mode */
 const currentMode = localStorage.getItem("mode");
@@ -52,7 +52,7 @@ btn.addEventListener("click", function() {
   localStorage.setItem("mode", getMode);
 
   setModeTitle();
- console.log(getMode);
+ //console.log(getMode);
 });
 
 function setModeTitle() {
@@ -65,13 +65,13 @@ function setModeTitle() {
 
 /* grab mode on page reload and implement */
 window.onbeforeunload = function() {
-    console.log(getMode);
+    //console.log(getMode);
     localStorage.setItem('modes', getMode);
 }
 
 window.onload = function() {
     modes = localStorage.getItem('modes');
-    console.log(modes);
+    //console.log(modes);
     if (modes !== null) {
         if(btn.innerHTML == 'Dark Mode' && (localStorage.getItem('modes') == 'dark' || localStorage.getItem('mode') == 'dark')) {
             btn.innerHTML = 'Light Mode';
