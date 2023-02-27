@@ -1,7 +1,7 @@
 'Use strict'
 
 //https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/
-const btn = document.querySelector(".btn__toggle");
+let btn = document.querySelector(".btn__toggle");
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 const modal = document.querySelector('.modal');
 const modal__container = document.querySelector('.modal__container');
@@ -9,9 +9,9 @@ const container = document.querySelector('.container');
 const header = document.querySelector('.header');
 const lmode = document.querySelectorAll('.lmode');
 const dmode = document.querySelectorAll('.dmode');
-let getMode;
+let getMode, nextPageMode, modes;
 
-
+/* Setting light & dark mode */
 const currentMode = localStorage.getItem("mode");
 
 if (currentMode == "dark") {
@@ -50,9 +50,38 @@ btn.addEventListener("click", function() {
   }
    
   localStorage.setItem("mode", getMode);
+
+  setModeTitle();
+ console.log(getMode);
 });
 
-/*------------------------------------*/
+function setModeTitle() {
+    if(btn.innerHTML == 'Dark Mode' && getMode == 'dark') {
+        btn.innerHTML = 'Light Mode';
+    } else if(btn.innerHTML == 'Light Mode' && getMode == 'light') {
+        btn.innerHTML = 'Dark Mode';
+    }
+}
+
+/* grab mode on page reload and implement */
+window.onbeforeunload = function() {
+    console.log(getMode);
+    localStorage.setItem('modes', getMode);
+}
+
+window.onload = function() {
+    modes = localStorage.getItem('modes');
+    console.log(modes);
+    if (modes !== null) {
+        if(btn.innerHTML == 'Dark Mode' && (localStorage.getItem('modes') == 'dark' || localStorage.getItem('mode') == 'dark')) {
+            btn.innerHTML = 'Light Mode';
+        } else if(btn.innerHTML == 'Light Mode' && (localStorage.getItem('modes') == 'light' || localStorage.getItem('mode') == 'light')) {
+            btn.innerHTML = 'Dark Mode';
+        }
+    }
+}
+/*-----------------------------------------------------*/
+/* modal element */
 if(modal) {
     modal.addEventListener('click', function() {
         if(modal.innerHTML == 'Show Modal' && (lmode || dmode)) {
@@ -67,9 +96,9 @@ if(modal) {
     })
 }
 
+/* navigation between pages */
 function nextPage() {
     location.href = 'next-page.html';
-   
 }
 
 function backPage() {
